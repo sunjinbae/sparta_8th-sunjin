@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스파르타코딩클럽</title>
+    <style>
+
+    .test2 {
+        background-color: chocolate;
+    }
+
+    #test2 {
+        color : blue
+    }
+    .test2 > div {
+        /* class가 test2인 바로 아래 자식 div 태그 영향 */
+        background-color: crimson;
+    }
+    .test2 div {
+        background-color: darkolivegreen;
+        /* class가 test2인 모든 자식 태그 영향 */
+    }
+
+    #test2_check > div input[type=password] {
+    /* id가 test2_check인 바로 아래 div 태그의 type이 password인 input 자식 */
+   background-color: black;
+    }
+
+    .test1.test2 {
+        /* class test1과 test2 모두 가지고 있는 아이들만 */
+        background-color: blanchedalmond;
+    }
+    </style> 
+</head>
+<!-- 선택자(selector) -->
+<div class = "test1 test2 test3" , id="test2_check"></div>
+<!-- class과 id 사용 차이 / id는 html 상에서 unique해야하는 값임 / class는 재사용이 가능함 -->
+<body>
+<div>
+<h1 class = "test1 test2" , id="test3"> 로그인 페이지</h1> 
+<div>
+<br class= "test2" > ID : <input type = "text" />
+</div>
+<div>
+<br class = "test1 test2"> PW : <input type = "password" />
+</div>
+<br>
+<button >로그인하기</button>
+</div>
+</body>
+
+</html>

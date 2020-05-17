@@ -1,0 +1,70 @@
+* {
+    /* 모든 HTML 태그 */
+}
+
+body,html {
+width :100%;
+height: 100%;
+font-family: 'Nanum Pen Script', cursive;
+font-weight: bold;
+/* font-weight 100,200,300,400,500, normal, bold */
+}
+
+.test1 {
+width :100%;
+height: 100%;
+background-color: rgb(250,250,250);
+display : flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.test2 {
+/* px, pt, em , rem .. 단위 */
+width :480px;
+height: 320px;
+background-color: #ffffff;
+padding : 20px 15px 20px 15px;
+/*padding top, right, bottom, left  */
+/* padding 2개만 입력 할경우 top/bottm, right/left */
+background-image: url('batch_10-22.jpg');
+background-repeat: no-repeat;
+background-size : cover;
+background-position: center;
+}
+h1 {
+font-size: 16px;
+color: #333333;
+text-align: center;
+margin-top: 20px;
+}
+.test4 > input {
+width : 100%;
+height: 42px;
+border: 1px solid red;
+border-radius : 4px;
+padding-top: 5px;
+padding-left: 10px;
+padding-right: 25px;
+box-shadow: 0px 2px 4px rgba(0, 0,0, 0.2);
+/* box-shadow : 그림자 x축 방향 / 그림자 y축 방향/ 그림자 blur 효과, 투명도 */
+text-decoration: none;
+outline: none;
+cursor: pointer;
+}
+
+.test4 > input:hover {
+background-color: royalblue;
+
+}
+
+.test4 > input::placeholder {
+color: rgb(0, 146, 151);
+font-family: 'Nanum Pen Script', cursive;
+
+}
+
+.test4 {
+display : flex;
+}
+
