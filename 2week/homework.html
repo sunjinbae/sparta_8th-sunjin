@@ -5,10 +5,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;display=swap" rel="stylesheet">
     <style>
+
+    html {
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 150px;
+      margin-bottom: 50px;
+      font-family: 'Cute Font', cursive;
+      line-height: 10px;
+      
+    }
+    
         .title {
             font-size: 36px;
         }
@@ -28,12 +44,89 @@
         .input-container > input-group {
             width: 100%;
         }
+        .container > img {
+          display : center;
+        }
+
+        .exchange_section > #exchange {
+          color: blue;
+        }
+
+        img { display: block; margin: 0px auto; }
+
     </style>  
+    
+    <script>
+      {  
+        function input_check() {
+          let name_check= $('#input_name').val();
+          let count_check = $('#inputGroupSelect01').val();
+          console.log(count_check);
+          let addr_check = $('#input_addr').val();
+          let tel_check= $('#input_tel').val();
+
+          if(name_check=='')
+          {
+            alert('주문자이름을 입력해주세요');
+          }
+          else if(count_check=='---수량을 선택해주세요---')
+         {
+           alert('수량을 선택해주세요');
+         }
+          else if (addr_check=='')
+          {
+            alert('주소를 입력해주세요');
+          }
+          else if(tel_check=='')
+          {
+            alert('전화번호를 입력해주세요');
+          }
+          else
+         {
+           alert('주문이 완료되었습니다');
+         }
+
+      }
+      
+      }
+    </script>
+
+    <script>
+
+$(document).ready(function(){
+     $.ajax({
+          type: "GET", // GET 방식으로 요청한다.
+          url: "https://api.manana.kr/exchange/rate.json",
+          data: {}, // 요청하면서 함께 줄 데이터 (GET 요청시엔 비워두세요)
+          success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
+            let KRW = response[1]["rate"];
+            console.log(KRW);
+            let exchange_html = `${KRW}`;
+
+            $('#exchange').append(exchange_html);
+
+          },
+          error: function(error) { // 서버에서 문제가 발생해서 정상값이 응답 안 올 때
+           console.log(error);
+          
+        }
+     })
+
+  // 여기에 환율 API Ajax 요청을 하면 되겠죠?
+});
+
+</script>
+
+
+
 </head>
   <body>
     <div class="container">
-        <!-- container class는 부트스트랩에서 제공하는 가운데로 정렬시키는 class임 -->
-
+        <!-- container class는 부트스트랩에서 제공하는 가운데로 정렬시키는 class임 --> 
+      <div class ="img_section">
+      <img src = "C:\Users\배선진\Desktop\sparta\sparta_8th-sunjin\2week\candle.PNG">
+      </div> 
+      </div>
       <div>  
         <h1 class="title"> 양초를 팝니다 <span>가격:3000원/개</span>
         </h1>      
@@ -41,18 +134,24 @@
             이 양초는 사실 특별한 힘을 가지고 있어요. 양초를 켜고 소원을 비면 짜자잔 뭐든지 이뤄지게 된답니다. 하나 사가세요! 대나무 향이 좋아요
         </p>
 
+        <div class="exchange_section">
+          <li id="exchange">
+            달러-원 환율 : 
+          </li>
+        </div>
     </div>
+
       <div class="input-container">  
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">주문자 이름</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="input_name">
               </div>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                  <label class="input-group-text" for="inputGroupSelect01" >수량</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
                   <option selected>---수량을 선택해주세요---</option>
@@ -66,17 +165,17 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">주소</span>
                 </div>
-                <input type="text" class="form-control" placeholder="주소" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="주소" aria-label="Username" aria-describedby="basic-addon1" id="input_addr">
               </div>
 
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">전화번호</span>
                 </div>
-                <input type="text" class="form-control" placeholder="전화번호" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="전화번호" aria-label="Username" aria-describedby="basic-addon1" id='input_tel'>
               </div>
 
-              <button class="btn btn-primary"> 
+              <button class="btn btn-primary" onclick="input_check()"> 
                   주문하기</button>
 
 
