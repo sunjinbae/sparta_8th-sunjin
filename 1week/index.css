@@ -55,7 +55,6 @@ cursor: pointer;
 
 .test4 > input:hover {
 background-color: royalblue;
-
 }
 
 .test4 > input::placeholder {
